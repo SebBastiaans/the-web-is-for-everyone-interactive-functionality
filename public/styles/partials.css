@@ -1,0 +1,63 @@
+/* MARK: nav bar ********************************************* */
+.navbar{
+    display: flex;
+    justify-content: space-evenly;
+    padding-block: 1rem;
+    position: fixed;
+    bottom: 0;
+    background-color: white;
+    width: 100%;
+    font-family: open-sans;
+
+    a{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        text-decoration: none;
+        color: var(--primary-text-color);
+        
+        &.active{
+            color: var(--active);
+
+            path{
+                color: var(--active);
+                fill: var(--active);
+            }
+        }
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+
+
+/* *************************************************************** */
+/* MARK: header nieuws detail pagina *****************************/
+.header-news-detail{
+    display: flex;
+    flex-direction: column;
+    padding-inline: .5rem;
+
+
+    h1{
+        align-self: center;
+    }
+
+    a{
+        text-decoration: none;
+        color: var(--primary-text-color);
+        font-family: open-sans;
+        position: absolute;
+        padding-left: .5rem;
+        transform: translateY(60%);
+        display: flex;
+        column-gap: .5rem;
+
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}
+/* *************************************************************** */

@@ -24,7 +24,119 @@ app.engine('liquid', engine.express())
 app.set('views', './views')
 
 
-console.log('Let op: Er zijn nog geen routes. Voeg hier dus eerst jouw GET en POST routes toe.')
+app.get('/', async function (request, response) {
+   // Render index.liquid uit de Views map
+   // Geef hier eventueel data aan mee
+   response.render('index.liquid', {
+    huidigPad: request.path
+   })
+})
+// Maak een GET route voor de index (meestal doe je dit in de root, als /)
+// !!!! route naar NIEUWS PAGINA !!!!  
+// Route 1: in-bloom filter
+app.get('/nieuws/in-de-bloei', async function (request, response) {
+  const plantParams = {
+    'fields': 'id,name,latin,slug,omscription,in_bloom,not_in_bloom,zones',
+    'filter[in_bloom][_nnull]': 'true'
+  }
+
+  const [newsResponse, plantResponse] = await Promise.all([ //Hiermee zorg je ervoor dat beide tegelijk worden opgehaald.
+    fetch('https://fdnd-agency.directus.app/items/frankendael_news'),
+    fetch('https://fdnd-agency.directus.app/items/frankendael_plants?' + new URLSearchParams(plantParams))
+  ])
+  
+  const newsResponseJSON = await newsResponse.json()
+  const plantResponseJSON = await plantResponse.json()
+
+  response.render('nieuws.liquid', {
+    // nieuws: tempDummyNews.data,
+    planten: plantResponseJSON.data,
+    huidigPad: request.path
+  })
+})
+
+// Route 2: not-in-bloom filter
+app.get('/nieuws/na-de-bloei', async function (request, response) {
+  const plantParams = {
+    'fields': 'id,name,latin,slug,omscription,in_bloom,not_in_bloom,zones',
+    'filter[not_in_bloom][_nnull]': 'true'
+  }
+
+  const [newsResponse, plantResponse] = await Promise.all([ //Hiermee zorg je ervoor dat beide tegelijk worden opgehaald.
+    fetch('https://fdnd-agency.directus.app/items/frankendael_news'),
+    fetch('https://fdnd-agency.directus.app/items/frankendael_plants?' + new URLSearchParams(plantParams)) //Hier komt die + ... aanvast omdat je wilt filteren op die parameters.
+  ])
+  
+  const newsResponseJSON = await newsResponse.json()
+  const plantResponseJSON = await plantResponse.json()
+
+  response.render('nieuws.liquid', {
+    // nieuws: tempDummyNews.data,
+    planten: plantResponseJSON.data,
+    huidigPad: request.path
+  })
+})
+
+// Route 3: alles (geen filter)
+app.get('/nieuws', async function (request, response) {
+
+  const search = request.query.search
+
+  let newsParams = {
+    'fields': 'title,image,slug'
+  }
+
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
+  const newsResponseJSON = await newsResponse.json()
+
+  response.render('nieuws.liquid', {
+    // nieuws: tempDummyNews.data,
+    nieuws: newsResponseJSON.data,
+    huidigPad: request.path,
+    zoeken: search
+  })
+})
+
+app.post('/nieuws', async function (request, response) {
+
+  const search = request.body.search
+  console.log(request.body)
+
+  let newsParams = {
+    'fields': 'title,image,slug'
+  }
+  
+  if(request.body.search != undefined){
+    newsParams['search'] = search
+  } 
+
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
+  const newsResponseJSON = await newsResponse.json()
+
+  response.redirect('/nieuws')
+})
+
+// Route 4: detail pagina
+app.get('/nieuws/:slug', async function (request, response) {
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+  const newsResponseJSON = await newsResponse.json()
+
+  const nieuwSlug = request.params.slug
+  const artikel = newsResponseJSON.data.find(item => item.slug === nieuwSlug)
+
+  
+  response.render('nieuwsDetail.liquid', 
+    { artikel: artikel })
+})
+ 
+ 
+// Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
+// Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
+app.post('/', async function (request, response) {
+  // Je zou hier data kunnen opslaan, of veranderen, of wat je maar wilt
+  // Er is nog geen afhandeling van een POST, dus stuur de bezoeker terug naar /
+  response.redirect(303, '/')
+})
 
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
@@ -78,4 +190,9 @@ app.set('port', process.env.PORT || 8000)
 app.listen(app.get('port'), function () {
   // Toon een bericht in de console
   console.log(`Daarna kun je via http://localhost:${app.get('port')}/ jouw interactieve website bekijken.\n\nThe Web is for Everyone. Maak mooie dingen 🙂`)
+})
+
+
+app.use((req, res, next) => {
+  res.status(404).render('404.liquid')
 })
