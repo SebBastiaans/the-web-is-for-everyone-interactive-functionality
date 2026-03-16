@@ -81,6 +81,7 @@ header{
 .main-news{
     ul{
         padding: 0;
+        padding-bottom: 5rem;
 
         li{
             height: auto;
@@ -149,6 +150,7 @@ header{
     flex-direction: column;
     row-gap: 1rem;
     padding-block: 1rem;
+    padding-bottom: 5rem;
 
     img{
         border-radius: var(--border-radius);
@@ -171,6 +173,7 @@ header{
     display: flex;
     flex-direction: column;
     row-gap: 1rem;
+    padding-bottom: 5rem;
 
     h2{
         font-weight: 400;

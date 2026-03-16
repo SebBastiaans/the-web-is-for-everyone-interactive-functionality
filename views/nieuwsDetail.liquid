@@ -11,9 +11,25 @@
     <p>
         {{ artikel.body }}
     </p>
+
+    <form action="/nieuws/{{ artikel.slug }}" method="POST">
+        <label>Laat een bericht achter</label>
+        <input type="text" name="name" placeholder="Naam:">
+        <textarea name="message" id="" placeholder="Laat hier je bericht achter"></textarea>
+        <input type="hidden" name="newsID" value="{{ artikel.id }}">
+        <button type="submit">Verstuur</button>
+        <ul>
+            {% for bericht in berichten %}
+                <li>
+                    <p> {{ bericht.name }} </p>
+                    <time datetime="{{ bericht.date }}"> {{ bericht.date | date: '%d-%m-%Y'}} </time>
+                    <p> {{ bericht.comment }} </p>
+                </li>                
+            {% endfor %}
+        </ul>
+    </form>
 </main>
 
 {%  render 'partials/navbar.liquid', huidigPad: huidigPad %}
 
 {%  render 'partials/foot.liquid' %}
-

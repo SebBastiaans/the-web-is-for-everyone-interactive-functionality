@@ -118,17 +118,45 @@ app.post('/nieuws', async function (request, response) {
 
 // Route 4: detail pagina
 app.get('/nieuws/:slug', async function (request, response) {
-  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news')
+  // TODO: filter op slug maken en meegeven aan volgende fetch
+  let newsParams = {
+    'filter[slug]': request.params.slug
+  }
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
   const newsResponseJSON = await newsResponse.json()
+  const artikel = newsResponseJSON.data[0]
 
-  const nieuwSlug = request.params.slug
-  const artikel = newsResponseJSON.data.find(item => item.slug === nieuwSlug)
-
+  let messageParams = {
+    // 'fields': 'name, comment, date_created',
+    'filter[news]': artikel.id
+  }
+  const messagesResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news_comments?' + new URLSearchParams(messageParams))
+  const messagesResponseJSON = await messagesResponse.json()
   
   response.render('nieuwsDetail.liquid', 
-    { artikel: artikel })
+    { artikel: artikel,
+      berichten: messagesResponseJSON.data
+     })
 })
- 
+
+app.post('/nieuws/:slug', async function (request, response){
+  const fetchCommentResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news_comments', {
+
+    method: 'POST',
+
+    body: JSON.stringify({
+      news: request.body.newsID,
+      comment: request.body.message,
+      name: request.body.name
+    }),
+
+    headers: {
+      'Content-Type': 'application/json;charset=UTF-8'
+    }
+  })
+  
+  response.redirect(303, '/nieuws/' + request.params.slug)
+})
  
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
