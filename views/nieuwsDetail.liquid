@@ -24,7 +24,9 @@
                     <p> {{ bericht.name }} </p>
                     <time datetime="{{ bericht.date_created }}"> {{ bericht.date_created | date: '%d/%m/%Y'}} </time>
                     <p> {{ bericht.comment }} </p>
-                </li>                
+                </li>
+                {% else %}
+                    <li>Er zijn nog geen opmerkingen.</li>
             {% endfor %}
         </ul>
     </form>
