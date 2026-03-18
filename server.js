@@ -97,24 +97,24 @@ app.get('/nieuws', async function (request, response) {
   })
 })
 
-app.post('/nieuws', async function (request, response) {
+// app.post('/nieuws', async function (request, response) {
 
-  const search = request.body.search
-  console.log(request.body)
+//   const search = request.body.search
+//   // console.log(request.body)
 
-  let newsParams = {
-    'fields': 'title,image,slug'
-  }
+//   let newsParams = {
+//     'fields': 'title,image,slug'
+//   }
   
-  if(request.body.search != undefined){
-    newsParams['search'] = search
-  } 
+//   if(request.body.search != undefined){
+//     newsParams['search'] = search
+//   } 
 
-  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
-  const newsResponseJSON = await newsResponse.json()
+//   const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
+//   const newsResponseJSON = await newsResponse.json()
 
-  response.redirect('/nieuws')
-})
+//   response.redirect('/nieuws')
+// })
 
 // Route 4: detail pagina
 app.get('/nieuws/:slug', async function (request, response) {
