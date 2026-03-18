@@ -232,8 +232,12 @@ header{
             color: white;
             border: none;
             width: 50%;
+            height: 1.2rem;
             cursor: pointer;
             margin-block: .5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
 
             &:active{
                 scale: .95;

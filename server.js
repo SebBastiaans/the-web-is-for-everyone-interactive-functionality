@@ -118,7 +118,6 @@ app.get('/nieuws', async function (request, response) {
 
 // Route 4: detail pagina
 app.get('/nieuws/:slug', async function (request, response) {
-  // TODO: filter op slug maken en meegeven aan volgende fetch
   let newsParams = {
     'filter[slug]': request.params.slug
   }
@@ -127,7 +126,6 @@ app.get('/nieuws/:slug', async function (request, response) {
   const artikel = newsResponseJSON.data[0]
 
   let messageParams = {
-    // 'fields': 'name, comment, date_created',
     'filter[news]': artikel.id
   }
   const messagesResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news_comments?' + new URLSearchParams(messageParams))
@@ -135,7 +133,8 @@ app.get('/nieuws/:slug', async function (request, response) {
   
   response.render('nieuwsDetail.liquid', 
     { artikel: artikel,
-      berichten: messagesResponseJSON.data
+      berichten: messagesResponseJSON.data,
+      verstuurd: request.query.verstuurd === 'true'
      })
 })
 
@@ -155,7 +154,7 @@ app.post('/nieuws/:slug', async function (request, response){
     }
   })
   
-  response.redirect(303, '/nieuws/' + request.params.slug)
+  response.redirect(303, '/nieuws/' + request.params.slug + '?verstuurd=true')
 })
  
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
