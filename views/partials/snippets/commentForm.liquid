@@ -1,17 +1,3 @@
-{%  render 'partials/head.liquid' %}
-
-{%  render 'partials/headerNieuws.liquid' %}
-
-<main class="main-news-detail">
-    <img src="https://fdnd-agency.directus.app/assets/{{artikel.image}}" alt="{{newsItem.title}}">
-    <time datetime="{{ artikel.date }}">Geplaatst: {{ artikel.date | date: '%d-%m-%Y'}}</time>
-    <p>
-        {{ artikel.title }}
-    </p>
-    <p>
-        {{ artikel.body }}
-    </p>
-
     <form action="/nieuws/{{ artikel.slug }}" method="POST" class="comment-form">
         <label>Laat een bericht achter</label>
         <input type="text" name="name" placeholder="Naam:" required>
@@ -32,9 +18,3 @@
             {% endfor %}
         </ul>
     </form>
-{% render 'partials/snippets/commentForm.liquid' %}
-</main>
-
-{%  render 'partials/navbar.liquid', huidigPad: huidigPad %}
-
-{%  render 'partials/foot.liquid' %}

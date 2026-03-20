@@ -133,8 +133,7 @@ app.get('/nieuws/:slug', async function (request, response) {
   
   response.render('nieuwsDetail.liquid', 
     { artikel: artikel,
-      berichten: messagesResponseJSON.data,
-      verstuurd: request.query.verstuurd === 'true'
+      berichten: messagesResponseJSON.data
      })
 })
 
@@ -143,8 +142,8 @@ app.post('/nieuws/:slug', async function (request, response){
 
     method: 'POST',
 
-    body: JSON.stringify({
-      news: request.body.newsID,
+    body: JSON.stringify({  
+      news: request.body.newsID, //de data van de POST van de form opgevangen door express.
       comment: request.body.message,
       name: request.body.name
     }),
@@ -154,8 +153,18 @@ app.post('/nieuws/:slug', async function (request, response){
     }
   })
   
-  response.redirect(303, '/nieuws/' + request.params.slug + '?verstuurd=true')
+  response.redirect(303, '/nieuws/' + request.params.slug)
 })
+
+//delete functie van comments.
+// app.post('/nieuws/:slug/:review', async function (request, response){
+//   await fetch('https://fdnd-agency.directus.app/items/frankendael_news_comments', + request.params.comments {
+
+//     method: 'DELETE',
+//   })
+  
+//   response.redirect(303, '/nieuws/' + request.params.slug)
+// })
  
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
