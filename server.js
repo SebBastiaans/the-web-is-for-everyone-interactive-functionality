@@ -126,7 +126,10 @@ app.get('/nieuws/:slug', async function (request, response) {
   const artikel = newsResponseJSON.data[0]
 
   let messageParams = {
-    'filter[news]': artikel.id
+    'filter[news]': artikel.id,
+    'filter[name][_nnull]': 'true',
+
+    'sort': '-date_created'
   }
   const messagesResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news_comments?' + new URLSearchParams(messageParams))
   const messagesResponseJSON = await messagesResponse.json()

@@ -13,9 +13,9 @@
     </p>
 
     <form action="/nieuws/{{ artikel.slug }}" method="POST" class="comment-form">
-        <label>Laat een bericht achter</label>
-        <input type="text" name="name" placeholder="Naam:" required>
-        <textarea name="message" id="" placeholder="Opmerking:" required></textarea>
+        <h2>Laat een bericht achter</h2>
+        <label>Naam:<input type="text" name="name" required></label>
+        <label>Bericht:<textarea name="message" id="" required></textarea></label>
         <input type="hidden" name="newsID" value="{{ artikel.id }}">
         <button type="submit">
             verstuur
@@ -32,7 +32,6 @@
             {% endfor %}
         </ul>
     </form>
-{% render 'partials/snippets/commentForm.liquid' %}
 </main>
 
 {%  render 'partials/navbar.liquid', huidigPad: huidigPad %}
