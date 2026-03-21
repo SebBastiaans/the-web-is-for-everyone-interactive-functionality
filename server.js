@@ -143,6 +143,7 @@ app.get('/nieuws/:slug', async function (request, response) {
   
   response.render('nieuwsDetail.liquid', 
     { artikel: artikel,
+      huidigPad: request.path,
       berichten: messagesResponseJSON.data
      })
 })
@@ -162,6 +163,16 @@ app.post('/nieuws/:slug', async function (request, response){
       'Content-Type': 'application/json;charset=UTF-8'
     }
   })
+  // const userCommentResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_users', {
+  //   method: 'POST',
+
+  //   body: JSON.stringify({
+
+  //   }),
+  //   headers: {
+  //     'Content-Type': 'application/json;charset=UTF-8'
+  //   }
+  // })
   
   response.redirect(303, '/nieuws/' + request.params.slug)
 })
@@ -176,6 +187,13 @@ app.post('/nieuws/:slug', async function (request, response){
 //   response.redirect(303, '/nieuws/' + request.params.slug)
 // })
  
+// Route 3: alles (geen filter)
+app.get('/veldverkenner', async function (request, response) {
+
+  response.render('veldverkenner.liquid', {
+    huidigPad: request.path,
+  })
+})
 // Maak een POST route voor de index; hiermee kun je bijvoorbeeld formulieren afvangen
 // Hier doen we nu nog niets mee, maar je kunt er mee spelen als je wilt
 app.post('/', async function (request, response) {

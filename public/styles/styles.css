@@ -352,3 +352,17 @@ header{
 
 }
 /* *************************************************************** */
+/* MARK: main veldverkenner pagina *****************************/
+.main-veldverkenner{
+    padding-inline: 0;
+    padding-bottom: 5rem;
+
+    svg{
+        width: 100vw;
+        height: auto;
+
+        a{
+            cursor: pointer;
+        }
+    }
+}
