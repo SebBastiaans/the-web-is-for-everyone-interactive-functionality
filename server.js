@@ -26,8 +26,15 @@ app.set('views', './views')
 
 app.get('/', async function (request, response) {
    // Render index.liquid uit de Views map
+  let newsParams = {
+    'fields': 'title,image,slug'
+  }
+
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_news?' + new URLSearchParams(newsParams))
+  const newsResponseJSON = await newsResponse.json()
    // Geef hier eventueel data aan mee
    response.render('index.liquid', {
+    nieuws: newsResponseJSON.data,
     huidigPad: request.path
    })
 })

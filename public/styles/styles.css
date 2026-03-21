@@ -282,24 +282,72 @@ header{
     }
 
     .home-list-title{
-        display: flex;
+        display: grid;
+        grid-template-areas: 
+        'icon titel'
+        'list list';
+        grid-template-columns: auto 1fr;
+        align-items: center;
 
         img{
             width: 25px;
+            grid-area: icon;
         }
         h3{
             font-size: 20px;
             font-weight: 400;
             padding-left: .5rem;
+            grid-area: titel;
         }
-    }
 
-    .else-message{
-        background-color: #c1f0ff;
-        border-radius: var(--border-radius);
-        padding: 1rem;
-        text-align: center;
-        font-family: open-sans;
+        ul{
+            grid-area: list;
+            display: flex;
+            overflow-x: auto;
+            gap: .5rem;
+
+            .news-item-hp{
+                width: 19.06rem;
+                height: 19.18rem;
+                background-color: #ffd380;
+                border-radius: var(--border-radius);
+                padding: .5rem;
+                flex-shrink: 0;
+
+                p{
+                    border: 1px solid var(--primary-text-color);
+                    width: fit-content;
+                    height: fit-content;
+                    padding: .1rem .2rem .1rem .2rem;
+                    border-radius: 1rem;
+                    font-size: 10px;
+                }
+                a{
+                    text-decoration: none;
+                    color: black;
+                    font-family: sansita;
+                    font-size: 1rem;
+                    font-weight: 700;
+                    padding-block: .5rem;
+                    display: block;
+                }
+                img{
+                    width: 100%;
+                    height: 12rem;
+                    object-fit: cover;
+                    border-radius: var(--border-radius);
+                }
+            }
+
+            .else-message{
+                background-color: #c1f0ff;
+                border-radius: var(--border-radius);
+                padding: 1rem;
+                text-align: center;
+                font-family: open-sans;
+
+            }
+        }
     }
 
 }
