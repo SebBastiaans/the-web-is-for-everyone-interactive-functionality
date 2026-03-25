@@ -1,10 +1,10 @@
 /* Sansita alle fonts wordt gebruikt voor voornamelijk headings */
 
-@font-face {
-  font-family: 'sansita';
-  src: url('/fonts/Sansita-Regular.ttf');
-  font-weight: 400;
-  font-style: normal;
+@font-face { 
+  font-family: 'sansita'; 
+  src: url('/fonts/Sansita-Regular.ttf'); 
+  font-weight: 400; 
+  font-style: normal; 
 }
 
 @font-face {
@@ -95,7 +95,7 @@ p{
 
 body {
     /* --------- font sizes --------- */
-    --paragraph: clamp(1rem, 2vw, 1.3rem);
+    --paragraph: clamp(1rem, 2vw, 1.3rem); 
     --heading-small: clamp(1.2rem, 2vw, 1rem);
     --heading-medium: clamp(1.4rem, 2.7vw, 2.2rem);
     --heading-big: clamp(1.4rem, 3vw, 2.5rem);

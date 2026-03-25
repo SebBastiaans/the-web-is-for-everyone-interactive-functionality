@@ -218,7 +218,7 @@ header{
             border: none;
             width: fit-content;
             padding: .1rem .5rem;
-            cursor: pointer;
+            cursor: pointer; /* limited available */
             margin-block: .5rem;
             align-self: start;
             margin-left: .5rem;
@@ -227,11 +227,6 @@ header{
                 scale: .95;
                 transition-duration: .2s;
             }
-        }
-
-        ::placeholder{
-            font-family: inter;
-            font-size: 1rem;
         }
 
         ul{
@@ -260,7 +255,7 @@ header{
 
                 p:nth-of-type(2){
                     grid-area: comment;
-                    text-wrap: pretty;
+                    text-wrap: pretty; /* newly available */
                     max-width: 50ch;
                 }
             }
@@ -288,6 +283,7 @@ header{
         'list list';
         grid-template-columns: auto 1fr;
         align-items: center;
+        row-gap: .5rem;
 
         img{
             width: 25px;
