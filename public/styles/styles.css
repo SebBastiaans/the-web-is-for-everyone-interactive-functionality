@@ -361,3 +361,29 @@ header{
         }
     }
 }
+
+.error{
+    border: 2px solid red;
+
+    &::before{ /*het error bericht*/
+        content: 'Er is iets fout gegaan';
+        background-color: rgb(245, 50, 50);
+        color: white;
+        font-family: inter;
+        padding: .1em .5em;
+        border-radius:0 0 var(--border-radius) var(--border-radius) ;
+    }
+}
+
+.succes{
+    border: 2px solid green;
+
+    &::before{ /*het gelukt bericht*/
+        content: 'Verstuurd!';
+        background-color: var(--active);
+        color: white;
+        font-family: inter;
+        padding: .1em .5em;
+        border-radius:0 0 var(--border-radius) var(--border-radius) ;
+    }
+}
