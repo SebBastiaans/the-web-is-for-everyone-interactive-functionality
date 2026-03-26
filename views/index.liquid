@@ -9,7 +9,7 @@
  
     <section class="home-list-title">
         <img src="/assets/collectieIcon.svg" alt="collectie icon">
-        <h3>Bloemneveld collectie</h3>
+        <h3>Bloemenveld collectie</h3>
 
         <ul>
             {% if collectie %}
@@ -31,7 +31,7 @@
             {% if nieuws %}
                 {% for newsItem in nieuws %}
                     <li class="news-item-hp" style="background-color: {{ newsItem.color }};">
-                        <p>Bloemneveld</p> 
+                        <p>Bloemenveld</p> 
                         <a href="/nieuws/{{ newsItem.slug }}">{{ newsItem.title }}</a>
                         <img src="https://fdnd-agency.directus.app/assets/{{newsItem.image}}" alt="{{newsItem.title}}">
                     </li> 
