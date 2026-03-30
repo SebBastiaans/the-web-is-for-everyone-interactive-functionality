@@ -86,11 +86,11 @@ img, video {
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: sansita;
+    font-family: sansita, sans-serif;
 }
 
 p{
-    font-family: inter;
+    font-family: inter, sans-serif;
 }
 
 body {
