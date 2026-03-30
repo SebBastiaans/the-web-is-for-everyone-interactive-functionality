@@ -136,3 +136,20 @@ body {
     /* border-radius */
     --border-radius: 10px;
 }
+
+/* zone kleuren */
+.sierlint {
+    background-color: var(--sierlint);
+}
+
+.voedseleiland {
+    background-color: var(--voedseleiland);
+}
+
+.heuvel {
+    background-color: var(--heuvel);
+}
+
+.waterplandgebied {
+    background-color: var(--waterplandgebied);
+}

@@ -69,11 +69,11 @@
     font-family: inter;
     background-color: #c6e3a5;
     margin-bottom: 1rem;
-    padding-bottom: .5rem;
-    box-shadow: 
+    /* padding-bottom: .5rem; */
+    /* box-shadow: 
         4px 4px 10px rgba(0, 0, 0, 0.25),
         -1px -1px 4px rgba(0, 0, 0, 0.05);
-    transform: rotate(-1deg);
+    transform: rotate(-1deg); */
     align-items: center;
     transition: transform 0.3s ease;
 
@@ -128,6 +128,7 @@
         max-height: 12rem;
         overflow-y: auto;
         border-top: 2px solid black;
+        background-color: white;
 
         li{
             border-bottom: 1px solid #958d4f;
@@ -158,26 +159,30 @@
 .error{
     border: 2px solid red;
 
-    &::before{ /*het error bericht*/
-        content: 'Er is iets fout gegaan';
-        background-color: rgb(245, 50, 50);
-        color: white;
-        font-family: inter;
-        padding: .1em .5em;
-        border-radius:0 0 var(--border-radius) var(--border-radius) ;
+    @supports selector(::before){
+        &::before{ /*het error bericht*/
+            content: 'Er is iets fout gegaan';
+            background-color: rgb(245, 50, 50);
+            color: white;
+            font-family: inter;
+            padding: .1em .5em;
+            border-radius:0 0 var(--border-radius) var(--border-radius) ;
+        }
     }
 }
 
 .succes{
     border: 2px solid green;
 
-    &::before{ /*het gelukt bericht*/
-        content: 'Verstuurd!';
-        background-color: var(--active);
-        color: white;
-        font-family: inter;
-        padding: .1em .5em;
-        border-radius:0 0 var(--border-radius) var(--border-radius) ;
+    @supports selector(::before){
+        &::before{ /*het gelukt bericht*/
+            content: 'Verstuurd!';
+            background-color: var(--active);
+            color: white;
+            font-family: inter;
+            padding: .1em .5em;
+            border-radius:0 0 var(--border-radius) var(--border-radius) ;
+        }
     }
 }
 /* *************************************************************** */
