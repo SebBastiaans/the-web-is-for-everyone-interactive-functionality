@@ -96,6 +96,7 @@
             font-family: inter, sans-serif;
             font-size: 1rem;
             border-radius: var(--border-radius);
+            max-width: 100%;
 
             &:focus-visible{
                 outline: 1px solid var(--active);
