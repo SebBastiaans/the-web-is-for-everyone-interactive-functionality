@@ -100,7 +100,7 @@ header{
                 animation-timeline: view();
                 animation-range: entry 0% cover 30%;
             }
-            
+
             img{
                 border-radius: var(--border-radius);
                 width: 100%;
@@ -161,15 +161,15 @@ header{
         object-fit: cover;
     }
     time{
-        font-family: open-sans;
+        font-family: open-sans, sans-serif;
     }
     p:first-of-type{
-        font-family: open-sans;
+        font-family: open-sans, sans-serif;
         font-weight: 700;
         font-size: 20px;
     }
     p:nth-of-type(2){
-        font-family: inter;
+        font-family: inter, sans-serif;
     }
 
 }
@@ -232,7 +232,7 @@ header{
                 a{
                     text-decoration: none;
                     color: black;
-                    font-family: sansita;
+                    font-family: sansita, sans-serif;
                     font-size: 1rem;
                     font-weight: 700;
                     padding-block: .5rem;
@@ -251,7 +251,7 @@ header{
                 border-radius: var(--border-radius);
                 padding: 1rem;
                 text-align: center;
-                font-family: open-sans;
+                font-family: open-sans, sans-serif;
 
             }
         }
