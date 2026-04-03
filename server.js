@@ -182,6 +182,27 @@ app.post('/', async function (request, response) {
   response.redirect(303, '/')
 })
 
+app.get('/collectie', async function (request, response) {
+
+  response.render('collectie.liquid')
+})
+
+app.get('/collectie', async function (request, response) {
+
+  const search = request.query.search
+
+  let collParams = {
+    'fields': 'title,image,slug'
+  }
+
+  const newsResponse = await fetch('https://fdnd-agency.directus.app/items/frankendael_plants?' + new URLSearchParams(collParams))
+  const newsResponseJSON = await newsResponse.json()
+
+  response.render('collectie.liquid', {
+    zoeken: search
+  })
+})
+
 /*
 // Zie https://expressjs.com/en/5x/api.html#app.get.method over app.get()
 app.get(…, async function (request, response) {

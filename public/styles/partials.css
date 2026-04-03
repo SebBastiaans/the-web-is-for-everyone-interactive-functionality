@@ -161,7 +161,7 @@
 
 
 .error{
-    border: 2px solid red;
+    outline: 2px solid red;
 
     @supports selector(::before){
         &::before{ /*het error bericht*/
@@ -170,7 +170,7 @@
             color: white;
             font-family: inter, sans-serif;
             padding: .1em .5em;
-            border-radius:0 0 var(--border-radius) var(--border-radius) ;
+            outline-radius:0 0 var(--border-radius) var(--border-radius) ;
         }
     }
 }
