@@ -27,7 +27,7 @@ Adhv [deze user story](https://github.com/SebBastiaans/the-web-is-for-everyone-i
 https://github.com/user-attachments/assets/0f286604-1e0c-4706-8a39-40079b731b91
 
 ### Algemene website
-Verder kun je nu nieuwsartikelen op de homepagina zien, heeft de veldverkenner tab de juiste achtergron, en heeft de collecite tab de 'in de bloei' en 'na de bloei' keuze.
+Verder kun je nu nieuwsartikelen op de homepagina zien, heeft de veldverkenner tab de juiste achtergrond, en heeft de collecite tab de 'in de bloei' en 'na de bloei' keuze.
 
 
 https://github.com/user-attachments/assets/24db2700-62b1-4df1-89f0-a65f61ea1b44
@@ -53,6 +53,9 @@ BIj het doorsturen van data wordt er bij de database [gecheckt of dit lukt of ni
 <img width="399" height="444" alt="image" src="https://github.com/user-attachments/assets/acdd4da4-77f7-4d15-9749-b6dacfa4a640" />
 <img width="399" height="436" alt="image" src="https://github.com/user-attachments/assets/7965dee9-ac74-4d49-89c4-0da5c9fc8fbc" />
 
+
+### Browsers getest
+In [dit issue](https://github.com/SebBastiaans/the-web-is-for-everyone-interactive-functionality/issues/21) heb ik de website met functies getest.
 
 ## Installatie
 <!-- Bij Installatie staat hoe een andere developer aan jouw repo kan werken -->
