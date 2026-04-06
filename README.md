@@ -17,6 +17,8 @@ De instructie vind je in: [INSTRUCTIONS.md](https://github.com/fdnd-task/the-web
 ## Beschrijving
 In dit project maak ik een webapp voor Bloemenveld Frankendael. In de repository [server-side-rendering-server-side-website](https://github.com/SebBastiaans/server-side-rendering-server-side-website) was begonnen aan dit project. In de sprint van deze repository draaide voornamleijk over een formulier maken die naar de database post. 
 
+Ik heb ervoor gekozen om een opmerking formulier te maken bij de nieuwsartikelen, omdat het voor meer interactie met de bezoekers zorgt. Wat precies de bedoeling is van de webapp.
+
 [Link naar mijn website.](https://the-web-is-for-everyone-interactive-mgem.onrender.com/)
 
 ## Gebruik
